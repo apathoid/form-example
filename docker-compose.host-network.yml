@@ -1,0 +1,20 @@
+services:
+  mongodb:
+    network_mode: host
+  backend:
+    build:
+      args:
+        - API_PORT=${API_PORT}
+    environment:
+      - API_HOST=localhost
+      - DB_HOST=localhost
+    network_mode: host
+  frontend:
+    build:
+      args:
+        - API_HOST=localhost
+        - API_PORT=${API_PORT}
+        - CLIENT_HOST=localhost
+        - CLIENT_PORT=${CLIENT_PORT}
+        - PROXY_API_HOST=localhost
+    network_mode: host

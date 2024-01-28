@@ -1,0 +1,33 @@
+services:
+  mongodb:
+    networks:
+      - backend-net
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+  backend:
+    build:
+      args:
+        - API_PORT=${API_PORT}
+    environment:
+      - API_HOST=${PROXY_API_HOST:-$API_HOST}
+    networks:
+      - backend-net
+      - frontend-net
+    ports:
+      - "${API_PORT}:${API_PORT}"
+  frontend:
+    build:
+      args:
+        - API_HOST=${API_HOST}
+        - API_PORT=${API_PORT}
+        - CLIENT_HOST=${CLIENT_HOST}
+        - CLIENT_PORT=${CLIENT_PORT}
+        - PROXY_API_HOST=${PROXY_API_HOST:-$API_HOST}
+    networks:
+      - frontend-net
+    ports:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+
+networks:
+  backend-net:
+  frontend-net:

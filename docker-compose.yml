@@ -1,0 +1,24 @@
+services:
+  mongodb:
+    image: mongo
+  backend:
+    build:
+      context: ./
+      dockerfile: ./backend/Dockerfile
+      args:
+        - NODE_ENV=production
+        - DIR_PREFIX=./backend
+    env_file:
+      - ./.env
+    depends_on:
+      - mongodb
+  frontend:
+    build:
+      context: ./
+      dockerfile: ./frontend/Dockerfile
+      args:
+        - NODE_ENV=production
+        - DIR_PREFIX=./frontend
+        - DOTENV_CONFIG_PATH=./.env
+    depends_on:
+      - backend

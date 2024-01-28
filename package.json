@@ -1,0 +1,28 @@
+{
+    "name": "form-example",
+    "version": "1.0.0",
+    "description": "Example of a fullstack application with a form with validation.",
+    "scripts": {
+        "install:deps": "npm install && npm run install:deps:backend && npm run install:deps:frontend",
+        "install:deps:backend": "npm install --config ./backend --prefix ./backend",
+        "install:deps:frontend": "npm install --config ./frontend --prefix ./frontend",
+        "build": "npm run build:backend && npm run build:frontend",
+        "build:backend": "npm run --prefix ./backend build",
+        "build:frontend": "DOTENV_CONFIG_PATH=../.env.dev npm run --prefix ./frontend build",
+        "start:backend": "DOTENV_CONFIG_PATH=../.env.dev npm run --prefix ./backend start",
+        "start:frontend": "DOTENV_CONFIG_PATH=../.env.dev npm run --prefix ./frontend start"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/apathoid/form-example.git"
+    },
+    "keywords": [
+        "test"
+    ],
+    "author": "apathoid",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/apathoid/form-example/issues"
+    },
+    "homepage": "https://github.com/apathoid/form-example#readme"
+}

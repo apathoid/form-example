@@ -1,0 +1,23 @@
+.fields {
+    display: flex;
+    gap: 10px 20px;
+    flex-wrap: wrap;
+}
+
+.searchButton {
+    margin-top: 20px;
+}
+
+.highlightField {
+    animation: highlight 1s infinite both;
+}
+
+@keyframes highlight {
+    from {
+        outline: 2px solid black;
+    }
+
+    to {
+        outline: 2px solid transparent;
+    }
+}
